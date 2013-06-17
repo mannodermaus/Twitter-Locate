@@ -1,0 +1,282 @@
+/********** Basics **********/
+html {
+	height: 100%;
+}
+
+body {
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
+}
+
+#map_canvas {
+	height: 100%;
+	width: 100%;
+	position:absolute;
+	margin: -15px;
+	padding: 0;
+}
+
+.button-dosearch {
+	float: right;
+	margin-bottom: 2em;
+	margin-right: 5em;
+}
+
+#losbutton {
+	position: absolute;
+}
+
+/********** Schrift **********/
+@import url(http://fonts.googleapis.com/css?family=Doppio+One);
+
+.ui-body-b, .ui-body-b input, .ui-body-b select, .ui-body-b textarea, .ui-body-b button {
+	font-family: 'Doppio One', sans-serif;
+	text-align: center;
+}
+
+label.ui-input-text {
+  	text-align: left;
+}
+
+input.ui-input-text {
+  	text-align: left;
+}
+
+.ui-header .ui-title, .ui-footer .ui-title {
+	font-family: 'Doppio One', sans-serif;
+}
+
+.ui-btn-text {
+	font-family: 'Doppio One', sans-serif;
+}
+
+.ui-content #location { 
+	font-size: 20px;
+	text-align: center;‚
+}
+
+
+.ui-header-fixed, .ui-footer-fixed {
+	height: 38px;
+}
+
+/********** jquery.mobile-1..1.0.css Code Überschreibung **********/
+/******************************************************************/
+
+/********** Breite der Website **********/
+.ui-mobile [data-role="page"], .ui-mobile [data-role="dialog"], .ui-page {
+	width: 800px;
+	margin: 0px auto;
+}
+
+.ui-header-fixed, .ui-footer-fixed {
+	width: 800px;
+	margin: 0px auto;
+	position: relative;
+}
+
+
+/********** Footer **********/
+.ui-footer-fixed {
+	position: relative;
+}
+
+#kartenansicht .ui-footer-fixed {
+	position: fixed;
+}
+
+/********** Header **********/
+.ui-header-fixed {
+	background-color:#5E87B0;
+	/* background-image:-webkit-linear-gradient(top, #6FACD5, #497BAE); */
+	/* background-image: url(../images/background-1.png); */
+	background-position:initial initial;
+	background-repeat:initial initial;
+	border-top-left-radius:10px;
+	border-top-right-radius:10px;
+	margin-top: 20px;
+}
+
+.ui-bar-b {
+	background-color:#5E87B0;
+    background-image:-webkit-linear-gradient(top, #6FACD5, #497BAE);
+    /* background-image:-webkit-linear-gradient(top, #5fcff9, #38b0dc); */
+    text-shadow:#3E6790 0 1px 1px;
+    /* text-shadow:#2290ba 0 1px 1px; */
+}
+
+/********** Background **********/
+.ui-body-b, .ui-overlay-b {
+	background-color:#fff;
+	/* background-image:-webkit-linear-gradient(top, #6FACD5, #497BAE); */
+	background-image: url(../images/background-1.png);
+	background-position:initial initial;
+	background-repeat:initial initial;
+	border:1px solid #ccc;
+	color:#565656;
+	font-weight:normal;
+	text-shadow:#f6f6f6 0 1px 0;
+}
+
+.ui-content {
+	background-image:-webkit-linear-gradient(top, #e9e9e9, #cecece);
+}
+
+
+/********** Listenansicht **********/
+.ui-li .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li {
+/*	background-image:-webkit-linear-gradient(top, #e9e9e9, #cecece); */
+	padding:0.9em 15px;
+	text-align: left;
+}
+
+.ui-listview-filter {
+	border-width:0;
+	margin-top: 6px;
+	overflow:hidden;
+}
+
+.ui-mobile [data-role="page"], .ui-mobile [data-role="dialog"], .ui-page {
+	position: relative;
+}
+
+/* Pagination-Punkte in der Listenansicht */
+.pageDot {
+    display: inline-block;
+    width:6px;height:6px;
+    border-radius:3px;
+	margin:3px;
+    background-color:#8999A6;
+}
+.pageDotActive {
+    background-color: white;
+}
+
+
+/********** Buttons Kartenansicht und Listenansicht **********/
+.ui-btn-inner {
+	border-color:rgba(255, 255, 255, 0.296875);
+	border-top-style:solid;
+	border-top-width:1px;
+	/* background-image:-webkit-linear-gradient(top, #6FACD5, #497BAE); */
+	/* background-image:-webkit-linear-gradient(top, #5fcff9, #38b0dc); */
+}
+
+.ui-btn-up-b {
+	text-shadow:#3E6790 0 1px 1px;	
+	/* text-shadow:#2290ba 0 1px 1px; */
+}
+
+.ui-icon-shadow {
+	-webkit-box-shadow:rgba(255, 255, 255, 0.398438) 0 1px 0;
+	box-shadow:rgba(255, 255, 255, 0.398438) 0 1px 0;
+}
+
+.ui-li-desc {
+	color: #ccc;
+	padding: 0 5em 1.5em 1.5em;
+}
+
+
+/********** Popup **********/
+.tweetUserPic {
+	padding: 1em;
+	text-align: center;
+}
+
+#tweetHeaderButton {
+	float: right;
+	padding: 1em;
+}
+
+
+/********** Media Queries **********/
+/***********************************/
+
+
+/********** iPad **********/
+@media screen and (max-width:768px) {
+	.ui-mobile [data-role="page"], .ui-mobile [data-role="dialog"], .ui-page {
+		width: 100%;
+	}
+
+	.ui-header-fixed, .ui-footer-fixed {
+		width: 100%;
+		position: fixed;
+	}
+
+	.ui-header-fixed {
+		margin-top: 0px;
+	}
+
+	.ui-content {
+		width: 96%;
+		float: none;
+	}
+
+	.ui-body-b, .ui-body-b input, .ui-body-b select, .ui-body-b textarea, .ui-body-b button {
+		width: 100%;
+	}
+
+	.ui-bar-b .ui-navbar {
+		width: 100%;
+		float: none;
+	}
+
+	input.ui-input-text, textarea.ui-input-text  {
+		width: 97%;
+	}
+}
+
+
+/********** iPhone **********/
+@media screen and (max-width:480px) {
+	.ui-mobile [data-role="page"], .ui-mobile [data-role="dialog"], .ui-page {
+		width: 100%;
+	}
+
+	.ui-header-fixed, .ui-footer-fixed {
+		width: 100%;
+		position: fixed;
+	}
+
+	.ui-header-fixed {
+		margin-top: 0px;
+	}
+
+	.ui-mobile [data-role="page"], .ui-mobile [data-role="dialog"], .ui-page {
+		position: absolute;
+	}
+
+	.ui-content {
+		width: 94%;
+		float: none;
+	}
+
+	.ui-body-b, .ui-body-b input, .ui-body-b select, .ui-body-b textarea, .ui-body-b button {
+		width: 100%;
+	}
+
+	.ui-bar-b .ui-navbar {
+		width: 100%;
+		float: none;
+	}
+
+	input.ui-input-text, textarea.ui-input-text  {
+		width: 95%;
+	}
+
+	.ui-body-b, .ui-overlay-b {
+		width: 90%;
+	}
+
+	.ui-content {
+		width: 91%;
+	}
+	.ui-listview-filter {
+		margin-top:-15px;
+	}
+
+}
+

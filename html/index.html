@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html manifest="twitterlocale.appcache"> 
+<head> 
+	<title>Twitter Locate</title> 
+	
+	<meta name="HandheldFriendly" content="True" />
+	<meta name="viewport"
+		  content="initial-scale=1.0, 
+				   maximum-scale=1.0,
+				   minimum-scale=1.0, 
+				   user-scalable=no, 
+                   width=device-width" />
+	<meta name="format-detection" content="telephone=no" />
+  
+	<link rel="stylesheet" href="css/jquery.mobile-1.1.0.min.css" />
+	<link rel="stylesheet" href="css/main.css" />
+	
+	<!-- JAVASCRIPT -->
+	<!-- jQuery -->
+	<script src="js/jquery-1.7.2.min.js"></script>
+	<script src="js/jquery.mobile-1.1.0.min.js"></script>
+
+	<!-- STORAGE -->
+	<script src="js/jstorage.js"></script>
+
+	<!-- Google Maps -->
+	<script src="https://maps.google.com/maps/api/js?sensor=false&v=2"></script>
+	
+	<!-- Weitere Funktionen von uns -->
+	<script src="js/googlemaps.js"></script>
+	<script src="js/validateInput.js"></script>
+	<script src="js/swipe.js"></script>
+	<script src="js/twitter_search.js"></script>
+	<script src="js/gotoAnchor.js"></script>
+	<script src="js/tweet_methods.js"></script>
+	
+	<!-- Unser Init-Skript -->
+	<script src="js/initFunctions.js"></script>
+	<script>
+	// Alles setzen, was direkt beim Seitenladen ausgeführt werden soll
+	 $(document).ready(function() {
+		initFunctions();
+	 });
+	 
+	</script>
+
+</head> 
+
+
+<body>
+<!-- STARTSEITE -->
+<div data-role="page" id="startseite" data-theme="b">
+
+	<div data-role="header" data-theme="b" data-position="fixed" data-tap-toggle="false" >
+		<img src="images/twitterlocate_logo.png" border="0" style="margin-top: 3px">
+		<a href="" data-role="button" data-icon="home" data-iconpos="notext" data-theme="b" id="settingsbutton" >Startseite</a>
+	</div><!-- /header -->
+
+	<div data-role="content">	
+		<br />
+		<form>
+	     <label for="suchbegriff">Suchbegriff:</label><input type="text" name="suchbegriff" id="suchbegriff" value="" />
+	     <label for="umkreis">Umkreis (km):</label><input type="number" name="umkreis" id="umkreis" value="2" />
+		 <!-- 
+		 <div data-role="fieldcontain">
+			    <fieldset data-role="controlgroup">
+			         	<input type="radio" onclick="javascript:changeView()" name="radio-choice-1" id="radio-choice-1" value="karte" checked="checked" />
+			         	<label for="radio-choice-1">Kartenansicht</label>
+						
+			         	<input type="radio" onclick="javascript:changeView()" name="radio-choice-1" id="radio-choice-2" value="liste" />
+			         	<label for="radio-choice-2">Listenansicht</label>
+			    </fieldset>
+		</div> -->
+		</form>
+		
+		<p>Twitter Locate ist ein verdammt cooler Dienst, mit dem Du im Handumdrehen Zugang zu den wichtigsten Tweets in Deiner Umgebung bekommst!</p>
+		<p>Trage einen Suchbegriff ein, gib' einen Radius an, in dem die Ergebnisse gesucht werden sollen, und klicke auf Los, um die Suche zu starten! Zusätzlich kannst Du auswählen, ob die Tweets in einer Liste oder auf einer Karte dargestellt werden sollen. Aber keine Sorge, zwischen den Ansichten wirst du jederzeit wechseln können!</p>
+		
+		<a href="#tweetDialog" data-role="button" data-inline="true" data-rel="dialog" data-transition="pop">Open dialog</a>
+		
+		<hr>
+		<p id="location"></p>
+		<hr>
+		
+	</div><!-- /content -->
+
+	<div data-role="footer" data-theme="b" data-position="fixed" data-tap-toggle="false" >
+		<div data-role="navbar">
+			<ul>
+				<li><a id="maptweets">Kartenansicht</a></li>
+				<li><a id="listtweets">Listenansicht</a></li>
+			</ul>
+		</div>
+	</div><!-- /footer -->
+
+</div><!-- /page -->
+
+<!-- KARTENANSICHT -->
+<div data-role="page" id="kartenansicht" data-theme="b">
+
+	<div data-role="header" data-theme="b" data-position="fixed" data-tap-toggle="false" >
+		<img src="images/twitterlocate_logo.png" border="0" style="margin-top: 3px">
+		<a  onclick="gotoAnchor('#startseite')" data-role="button" data-icon="home" data-iconpos="notext" data-theme="b" id="settingsbutton" >Startseite</a>
+	</div><!-- /header -->
+
+	<div data-role="content">
+		<div class="map" id="map_canvas"></div>
+	</div><!-- /content -->
+
+	<div class="footer-map" data-role="footer" data-position="fixed" data-theme="b" data-tap-toggle="false" >
+		<div data-role="navbar">
+			<ul>
+				<li><a class="ui-btn-active ui-state-persist">Kartenansicht</a></li>
+				<li><a id="fromMapToList">Listenansicht</a></li>
+			</ul>
+		</div>
+	</div><!-- /footer -->
+</div><!-- /page -->
+
+<!-- LISTENANSICHT -->
+<div data-role="page" id="listenansicht" class="searchPage" data-theme="b">
+
+    <div data-role="header" data-theme="b" data-position="fixed" data-tap-toggle="false" >
+        <img src="images/twitterlocate_logo.png" border="0" style="margin-top: 3px">
+        <a  onclick="gotoAnchor('#startseite')" data-role="button" data-icon="home" data-iconpos="notext" data-theme="b" id="settingsbutton" >Startseite</a>
+    </div><!-- /header -->
+
+    <div id="theResult" data-role="content">    
+		<ul data-role="listview" id="resultList"></ul>
+    </div><!-- /content -->
+
+    <div data-role="footer" data-theme="b" data-position="fixed" data-tap-toggle="false" >
+        <div data-role="navbar">
+            <ul>
+                <li><a id="fromListToMap">Kartenansicht</a></li>
+                <li><a class="ui-btn-active ui-state-persist">Listenansicht</a></li>
+            </ul>
+        </div>
+    </div><!-- /footer -->
+</div><!-- /page -->
+
+<!-- Dialog für Tweets -->
+<div data-role="dialog" id="tweetDialog">
+	
+	<div id="tweetDialogHeader" data-role="header" data-theme="b">
+	</div>
+
+	<div id="tweetDialogContent" data-role="content" data-theme="b">
+		<p id="tweetText">tweet text placeholder</p>
+		<img class="tweetAddedPic" src="" alt="" />
+	</div>
+</div>
+
+</body>
+</html>
